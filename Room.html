@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="no-cache" http-equiv="Pragma">
+    <title>Chat Room</title>
+    <meta name="description" content="">
+    
+<link rel="stylesheet" type="text/css" href="./css/bubbler.css">
+
+</head>
+<body class="bubbler">
+
+<div id="app-container">
+  <div id="page-loading" class="loading" style="display: none;"></div>
+  <div id="index-page-wrapper" style="display: block;"><div class="" style="width: 100%; height: 100%;">
+  <div id="current-song" class="song-panel"><div class="gear sprite-sprites-gear_l"></div>
+  <div class="gear sprite-sprites-gear_s"></div>
+  <div class="song-info">
+  <div class="cover" style="background-image:url(http://img3.douban.com/lpic/s3232271.jpg);">
+    <div class="info">
+        <div class="bd" style="display: block;">
+          <input type="hidden" id="current_song_id" value="1023004">
+          <h2>程序员热线</h2>
+          <span class="artist">Online</span>
+        </div>
+    </div>
+  </div>
+</div>
+
+</div> <!-- end of current song -->
+  <!-- here to show the bubbler list -->
+  <div id="timeline" class="blocks" style="height: 738px;">
+    <div class="newer-block" style="display: none;">
+      <span class="array-up array">︿</span>
+      <h1>NEWER</h1>
+    </div>
+    <div class="blocks-wrapper" style="margin-top: -50px;">
+    <div class="block" style="background-color: rgb(240, 242, 241); z-index: 100; height: 688px; top: 0px;"><!-- Container of bubs -->
+		<div class="bubs">
+			<div class="popup-wrapper">
+				
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+  <script type="text/javascript" src="./css/main.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+	  var name = 'Penny';
+	  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+	  var color = 'rgb(213, 255, 213)';
+	  var msg = '师兄，电脑坏了，能帮忙修一下吗？';
+	  comingMsg(name, bgimg, msg, color, 143, 509);
+  });
+	
+  $("div.song-info").live('click', function(){
+	  setTimeout(function(){
+		  var name = 'Jason';
+		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var color = 'rgb(127, 205, 40)';
+		  var msg = '同学，电脑坏了，帮忙修一下吧^_^';
+		  comingMsg(name, bgimg, msg, color, 75, 80);
+	  }, 1000);
+	  
+	  setTimeout(function(){
+		  var name = 'Rob';
+		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var color = 'rgb(30, 205, 240)';
+		  var msg = '大牛，电脑坏了，帮忙修一下吧^_^';
+		  comingMsg(name, bgimg, msg, color, 164, 650);
+	  }, 1300);
+	  
+	  setTimeout(function(){
+		  var name = 'Tom';
+		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var color = 'rgb(145, 119, 190)';
+		  var msg = '学长，电脑坏了，帮忙修一下吧^_^';
+		  comingMsg(name, bgimg, msg, color, 355, 760);
+	  }, 1600);
+	  
+	  setTimeout(function(){
+		  var name = 'Lily';
+		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var color = 'rgb(218, 119, 226)';
+		  var msg = '亲，电脑坏了，帮忙修一下吧^_^';
+		  comingMsg(name, bgimg, msg, color, 280, 234);
+	  }, 1900);
+	  
+	  setTimeout(function(){
+		  var name = 'Kate';
+		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var color = 'rgb(187, 185, 180)';
+		  var msg = '大神，电脑坏了，帮忙修一下吧^_^';
+		  comingMsg(name, bgimg, msg, color, 480, 523);
+	  }, 2200);
+  });
+  
+  $("div.frm-actions input").live('click', function(){
+	  var text = $(this).closest('.bd').find('.inp').val().trim();
+	  if (text == '') return;
+	  
+	  var name = 'Freeze';
+	  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+	  var color = 'rgb(227, 235, 140)';
+	  var str = getFmtStr(name, bgimg, text, color);
+	  
+	  $(this).closest('.popup').find('.talk-list').append(str);
+	  $(this).closest('.bd').find('.inp').val('');
+  });
+  
+  function getFmtStr(name, bgimg, text, color){
+	  var str = '';
+	  str += '<div class="talk-box" style="background-color:'+color+';">';
+	  str += '<div class="user-info">';
+	  str += '<a href="#" target="_blank">';
+	  str += '<span class="user-icon" style="background-image:url('+bgimg+');"></span>';
+	  str += '</a>';
+  	  str += '<span class="user-name"><a href="#" target="_blank">'+name+'</a></span>';
+	  str += '</div>';
+	  str += '<div class="bd" style="border-top: dashed;border-width: 1px;">';
+	  str += '<div class="content">';
+	  str += '<p>'+text+'</p>';
+	  str += '</div></div></div>';
+	  return str;
+  };
+  
+  function comingMsg(name, bgimg, text, color, top, left) {
+	  var str = '';
+	  str += '<div class="popup" style="display:none; top:'+top+'px; left: '+left+'px;">';
+	  str += '<a class="lnk-close">×</a>';
+	  str += '<div class="talk-list">';
+	  str += getFmtStr(name, bgimg, text, color);
+	  str += '</div>';
+	  str += '<div class="bd">';
+	  str += '<div><textarea type="text" name="comment" class="inp" maxlength="127" style="width: 98%;"></textarea></div>';
+	  str += '<div class="frm-actions"><input type="submit" value="回复" class="inp-submit"></div>';
+	  str += '</div></div>';
+	  
+	  $('.popup-wrapper').append(str);
+	  var temp = $('.popup-wrapper .popup').last();
+	  temp.fadeIn();
+	  
+	  temp.draggable();
+	  
+	  var largestZ = -1;
+	  $(".popup").each(function(i) {
+		  var currentZ = parseFloat($(this).css("zIndex"));
+		  largestZ = currentZ > largestZ ? currentZ : largestZ;
+	  });
+	  temp.css("z-index", largestZ + 1);
+  }
+  
+  $(".popup").live("click", function(e){
+	  var largestZ = -1;
+	  $(".popup").each(function(i) {
+		  var currentZ = parseFloat($(this).css("zIndex"));
+		  largestZ = currentZ > largestZ ? currentZ : largestZ;
+	  });
+	  
+	  $(this).css("z-index", largestZ + 1);
+  });
+  </script>
+
+</body>
+</html>
