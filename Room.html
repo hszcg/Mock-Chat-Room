@@ -52,7 +52,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
 	  var name = 'Penny';
-	  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+	  var bgimg = './tt/0.jpg';
 	  var color = 'rgb(213, 255, 213)';
 	  var msg = '师兄，电脑坏了，能帮忙修一下吗？';
 	  comingMsg(name, bgimg, msg, color, 143, 509);
@@ -61,7 +61,7 @@
   $("div.song-info").live('click', function(){
 	  setTimeout(function(){
 		  var name = 'Jason';
-		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var bgimg = './tt/1.jpg';
 		  var color = 'rgb(127, 205, 40)';
 		  var msg = '同学，电脑坏了，帮忙修一下吧^_^';
 		  comingMsg(name, bgimg, msg, color, 75, 80);
@@ -69,7 +69,7 @@
 	  
 	  setTimeout(function(){
 		  var name = 'Rob';
-		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var bgimg = './tt/2.jpg';
 		  var color = 'rgb(30, 205, 240)';
 		  var msg = '大牛，电脑坏了，帮忙修一下吧^_^';
 		  comingMsg(name, bgimg, msg, color, 164, 650);
@@ -77,7 +77,7 @@
 	  
 	  setTimeout(function(){
 		  var name = 'Tom';
-		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var bgimg = './tt/3.jpg';
 		  var color = 'rgb(145, 119, 190)';
 		  var msg = '学长，电脑坏了，帮忙修一下吧^_^';
 		  comingMsg(name, bgimg, msg, color, 355, 760);
@@ -85,7 +85,7 @@
 	  
 	  setTimeout(function(){
 		  var name = 'Lily';
-		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var bgimg = './tt/4.jpg';
 		  var color = 'rgb(218, 119, 226)';
 		  var msg = '亲，电脑坏了，帮忙修一下吧^_^';
 		  comingMsg(name, bgimg, msg, color, 280, 234);
@@ -93,24 +93,40 @@
 	  
 	  setTimeout(function(){
 		  var name = 'Kate';
-		  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+		  var bgimg = './tt/5.jpg';
 		  var color = 'rgb(187, 185, 180)';
 		  var msg = '大神，电脑坏了，帮忙修一下吧^_^';
 		  comingMsg(name, bgimg, msg, color, 480, 523);
 	  }, 2200);
   });
-  
+
+  $('textarea.inp').keydown(function(e) {
+    if(e.keyCode == 13) {
+      e.preventDefault();
+      $(this).closest('.bd').find('.inp-submit').trigger('click');;
+    }
+  });
+
   $("div.frm-actions input").live('click', function(){
 	  var text = $(this).closest('.bd').find('.inp').val().trim();
 	  if (text == '') return;
 	  
 	  var name = 'Freeze';
-	  var bgimg = 'http://img3.douban.com/icon/u2469694-3.jpg';
+	  var bgimg = './tt/00.gif';
 	  var color = 'rgb(227, 235, 140)';
 	  var str = getFmtStr(name, bgimg, text, color);
 	  
 	  $(this).closest('.popup').find('.talk-list').append(str);
-	  $(this).closest('.bd').find('.inp').val('');
+    $(this).closest('.bd').find('.inp').val('');
+
+    var first_box = $(this).closest('.popup').find('.talk-box').eq(0);
+    var box_list = $(this).closest('.popup').find('.talk-list');
+
+    setTimeout(function(){
+      var obj = first_box.clone();
+      obj.find('.content').html('<p>太感动了~ <img src="css/moving.gif" style="width: 30px;" /></p>');
+	    box_list.append(obj);
+    }, 700);
   });
   
   function getFmtStr(name, bgimg, text, color){
