@@ -100,7 +100,7 @@
 	  }, 2800);
   });
 
-  $('textarea.inp').keydown(function(e) {
+  $('textarea.inp').live('keypress', function(e){
     if(e.keyCode == 13) {
       e.preventDefault();
       $(this).closest('.bd').find('.inp-submit').trigger('click');;
@@ -126,7 +126,7 @@
       var obj = first_box.clone();
       obj.find('.content').html('<p>太感动了~ <img src="css/moving.gif" style="width: 30px;" /></p>');
 	    box_list.append(obj);
-    }, 700);
+    }, 1500);
   });
   
   function getFmtStr(name, bgimg, text, color){
@@ -134,9 +134,9 @@
 	  str += '<div class="talk-box" style="background-color:'+color+';">';
 	  str += '<div class="user-info">';
 	  str += '<a href="#" target="_blank">';
-	  str += '<span class="user-icon" style="background-image:url('+bgimg+');"></span>';
-	  str += '</a>';
-  	  str += '<span class="user-name"><a href="#" target="_blank">'+name+'</a></span>';
+    str += '<span class="user-icon" style="background-image:url('+bgimg+');"></span>';
+    str += '</a>';
+    str += '<span class="user-name"><a href="#" target="_blank">'+name+'</a></span>';
 	  str += '</div>';
 	  str += '<div class="bd" style="border-top: dashed;border-width: 1px;">';
 	  str += '<div class="content">';
